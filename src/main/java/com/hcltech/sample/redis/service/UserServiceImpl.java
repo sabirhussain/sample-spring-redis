@@ -27,7 +27,7 @@ class UserServiceImpl implements UserService {
             user.setId(UUID.randomUUID().toString());
             String userAsJson = objectMapper.writeValueAsString(user);
             stringRedisTemplate.opsForValue().set(user.getId(), userAsJson);
-            log.info("user has been created: {}", userAsJson);
+            //log.info("user has been created: {}", userAsJson);
         } catch (JsonProcessingException ex) {
             throw new RuntimeException(ex);
         }

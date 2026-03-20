@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.11</version>
+        <version>3.1.12</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hcltech.sample</groupId>
@@ -28,7 +28,8 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-        <spring-boot-admin.version>3.5.8</spring-boot-admin.version>
+        <spring-boot-admin.version>3.1.8</spring-boot-admin.version>
+        <lettuce.version>6.2.0.RELEASE</lettuce.version>
     </properties>
     <dependencies>
         <dependency>
@@ -81,6 +82,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
