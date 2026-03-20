@@ -21,7 +21,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: metrics, health, info, threadDump, cpu
+        include: metrics, health, info, threadDump
   endpoint:
     metrics:
       access: unrestricted
