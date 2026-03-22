@@ -1,19 +1,10 @@
 spring:
   application:
     name: redis
-  ssl:
-    bundle:
-      pem:
-        valkey-tls:
-          truststore:
-            certificate: classpath:certs/ca.crt
   data:
-    redis:
+    valkey:
       host: localhost
       port: 6379
-      ssl:
-        enabled: true
-        bundle: valkey-tls
   boot:
     admin:
       client:
