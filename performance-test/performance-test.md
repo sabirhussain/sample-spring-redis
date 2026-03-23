@@ -11,7 +11,10 @@
 | RAM                | 24 GB (23.8 GB usable)                              |
 | Architecture       | x64                                                 |
 | Operating System   | Ubuntu 24.04.4 LTS                                  |
-| Test Tool          | Hey                                                 |
+
+## Testing Tool
+![Hey](https://github.com/rakyll/hey) is a tiny program that sends some load to a web application.
+It is similar to ApacheBench (ab) but supports HTTP/2 and has more features.
 
 ## Redis Configuration
 
