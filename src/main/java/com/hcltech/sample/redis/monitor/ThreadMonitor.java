@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ThreadMonitor {
 
-    @Scheduled(fixedRate = 500)
+    @Scheduled(fixedRate = 1000)
     public void logActiveThreadCount() {
         int activeThreadCount = Thread.activeCount();
         log.info("Active threads: {}", activeThreadCount);
