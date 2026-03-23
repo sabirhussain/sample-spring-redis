@@ -1,4 +1,18 @@
 # Getting Started
+## Start Admin Server
+
+```bash
+docker run -p 8181:8181 codecentric/spring-boot-admin:3.3.3
+```
+
+## Start Redis Server
+1. Make from source
+2. Start the server with configuration provided in ![performance-test.md](performance-test/performance-test.md)
+
+### Starting the Application
+```bash 
+mvn spring-boot:run
+```
 
 ### Reference Documentation
 
