@@ -1,4 +1,4 @@
-# Redis Standalone Performance Test
+# Valkey Standalone Performance Test
 
 ## System Configuration
 
