@@ -1,0 +1,16 @@
+# Project Configuration — update this file per project
+project:
+  language: Java
+  jdk_version: 17
+  build_tool: Maven   # Maven | Gradle
+
+framework:
+  spring_boot_version: 3.5.11
+
+package:
+  base: com.hcltech.sample.redis
+  test_path: src/test/java/com/hcltech/sample/redis
+  main_path: src/main/java/com/hcltech/sample/redis
+
+testing:
+  framework: JUnit 5 + Mockito          # JUnit 5 + Mockito | TestNG | Spock

@@ -1,14 +1,16 @@
 package com.hcltech.sample.redis.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 
-@Data
-public class User {
-    @JsonIgnore
-    private String id;
-    private String name;
-    private String email;
-    private String city;
-    private String country;
+public record User(
+        @JsonIgnore
+        String id,
+        String name,
+        String email,
+        String city,
+        String country
+) {
+    public User withId(String id) {
+        return new User(id, name, email, city, country);
+    }
 }

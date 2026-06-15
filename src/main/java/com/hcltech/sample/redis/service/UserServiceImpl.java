@@ -3,6 +3,7 @@ package com.hcltech.sample.redis.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hcltech.sample.redis.entity.User;
+import com.hcltech.sample.redis.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Slf4j
 class UserServiceImpl implements UserService {
     private final StringRedisTemplate stringRedisTemplate;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     @Override
     public String createUser(User user) {
@@ -24,15 +25,14 @@ class UserServiceImpl implements UserService {
         }
 
         try {
-            user.setId(UUID.randomUUID().toString());
+            String id = UUID.randomUUID().toString();
             String userAsJson = objectMapper.writeValueAsString(user);
-            stringRedisTemplate.opsForValue().set(user.getId(), userAsJson);
-            log.info("user has been created: {}", userAsJson);
+            stringRedisTemplate.opsForValue().set(id, userAsJson);
+            log.info("user has been created: id={}", id);
+            return id;
         } catch (JsonProcessingException ex) {
             throw new RuntimeException(ex);
         }
-
-        return user.getId();
     }
 
     @Override
@@ -43,11 +43,12 @@ class UserServiceImpl implements UserService {
 
         String userAsJson = stringRedisTemplate.opsForValue().get(id);
         if (userAsJson == null) {
-            throw new RuntimeException(String.format("user does not exist: %s", id));
+            throw new ResourceNotFoundException(User.class.getCanonicalName(), id);
         }
 
         try {
-            return objectMapper.readValue(userAsJson, User.class);
+            User user = objectMapper.readValue(userAsJson, User.class);
+            return user.withId(id);
         } catch (JsonProcessingException ex) {
             throw new RuntimeException(ex);
         }
